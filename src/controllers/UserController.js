@@ -14,7 +14,7 @@ module.exports = {
   },
   async getUser (req, res) {
     try {
-      const userId = req.params.user
+      const userId = req.params.id
       console.log(`\n ${userId} \n`)
       const user = await User.findOne({
         where: {
@@ -22,8 +22,16 @@ module.exports = {
         },
         attributes: ['email', 'id']
       })
-      res.send(user)
+      if(user) {
+        res.send(user)
+      } else {
+        res.status(404).send({
+          error: `User not found.`
+        })
+      }
+      
     } catch (err) {
+      console.log(err)
       res.status(500).send({
         error: `User not found.`
       })
