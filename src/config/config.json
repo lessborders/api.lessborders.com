@@ -1,13 +1,16 @@
 {
     "development": {
-      "username": "root",
-      "password": "mySuperSecretPassword",
-      "database": "christmaswishlist",
+      "username": "lb_admin",
+      "password": "Halliday2011!",
+      "database": "lb_cloud",
       "host": "localhost",
       "dialect": "mysql"
     },
     "production": {
-      "use_env_variable": "JAWSDB_URL",
+      "username": "lb_admin",
+      "password": "Halliday2011!",
+      "database": "lb_cloud",
+      "host": "localhost",
       "dialect": "mysql"
     }
   }

@@ -3,16 +3,21 @@ const path = require('path')
 var basename = path.basename(module.filename)
 const Sequelize = require('sequelize')
 var env = process.env.NODE_ENV || 'development'
+var config = require('../config/config.json')[env]
 var configLocal = require('../config/config')
 var db = {}
 var sequelize = null
 
-sequelize = new Sequelize(
-  configLocal.db.database,
-  configLocal.db.user,
-  configLocal.db.password,
-  configLocal.db.options
-)
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable])
+} else {
+  sequelize = new Sequelize(
+    configLocal.db.database,
+    configLocal.db.user,
+    configLocal.db.password,
+    configLocal.db.options
+  )
+}
 
 sequelize.authenticate().then(function () {
   console.log('Database connected and authenticated!')
