@@ -22,7 +22,6 @@ passport.use(
       if (!user) {
         return done(new Error(), false)
       }
-      // Pass in user here and our custom callback authentication logic will set req.user for us
       return done(null, user)
     } catch (err) {
       return done(new Error(), false)

@@ -14,8 +14,7 @@ module.exports = {
   async register (req, res) {
     try {
       const user = await User.create(req.body)
-      // Return a jwt token while the user register with the user information
-      // Otherwise, the user has to log in after they register
+      // Return a jwt token
       const userJson = user.toJSON()
       res.send({
         user: user.id,
@@ -28,17 +27,13 @@ module.exports = {
       })
     }
   },
-  // The AuthenticationController.login method
   async login (req, res) {
     try {
-      // Grab email and password from req.body
       const { email, password } = req.body
-      // Find a user using an email
       const user = await User.findOne({
         where: { email: email }
       })
 
-      // If the login user doesn't have that email, return an error
       if (!user || !password) {
         return res.status(403).send({
           error: 'Incorrect email or password given'
@@ -46,7 +41,6 @@ module.exports = {
       }
 
       console.log(password)
-      // If the password doesn't match the user's password, return an error
       const isPasswordValid = await user.comparePassword(password)
       // console.log('isPasswordValid', isPasswordValid, password)
       if (!isPasswordValid) {
@@ -55,7 +49,7 @@ module.exports = {
         })
       }
 
-      // Otherwise, return a jwt token with the user information
+      // Return a jwt token
       const userJson = user.toJSON()
       res.send({
         user: user.id,
