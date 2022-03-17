@@ -11,8 +11,8 @@ module.exports = (app) => {
     AuthenticationController.login)
 
   app.get('/user/:id',
-    UserController.getUser)
-  app.get('/user/me',
+    UserController.getPublicUser)
+  app.get('/user/private/:id',
     isAuthenticated,
-    UserController.index)
+    UserController.getPrivateUser)
 }
