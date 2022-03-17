@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 var basename = path.basename(module.filename)
 const Sequelize = require('sequelize')
+
 var env = process.env.NODE_ENV || 'development'
 var config = require('../config/config.json')[env]
 var configLocal = require('../config/config')
