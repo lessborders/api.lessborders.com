@@ -1,12 +1,12 @@
 const { User } = require('../models')
-const jwt = require('jsonwebtoken')
 const _ = require('lodash')
-const config = require('../config/config')
 
 module.exports = {
-  async index (req, res) {
+  async getUsers (req, res) {
     try {
-      const usersList = await User.findAll({ attributes: ['email', 'id'] })
+      const usersList = await User.findAll({ 
+        attributes: ['email', 'id'] 
+      })
       res.send(usersList)
     } catch (err) {
       res.status(500).send({
@@ -40,18 +40,24 @@ module.exports = {
   },
   async getPrivateUser (req, res) {
     try {
-      const userId = req.params.id
+      let userId = 0;
+      if(req.params.id > 0) {
+        userId = req.params.id
+      }else if(req.user.id) {
+        userId = req.user.id
+      }
+
       const user = await User.findOne({
         where: {
           id: userId
-        },
-        attributes: ['id', 'email', 'password']
+        }
       })
+      
       if(user && user.id === req.user.id) {
         res.send(user)
       } else {
         res.status(404).send({
-          error: `User not found.`
+          error: `You dont have access to this resource`
         })
       }
       
