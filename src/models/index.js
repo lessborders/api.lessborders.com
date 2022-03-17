@@ -9,7 +9,12 @@ var db = {}
 var sequelize = null
 
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable])
+  sequelize = new Sequelize(
+    process.env[config.env.database],
+    process.env[config.env.user],
+    process.env[config.env.password],
+    process.env[config.env.options]
+  )
 } else {
   sequelize = new Sequelize(
     configLocal.db.database,
