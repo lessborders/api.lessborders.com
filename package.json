@@ -24,6 +24,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "joi": "^17.6.0",
+    "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
     "mysql2": "^2.3.3",
