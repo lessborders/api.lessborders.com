@@ -35,7 +35,7 @@ module.exports = {
       })
 
       if (!user || !password) {
-        return res.status(403).send({
+        return res.send({
           error: 'Incorrect email or password given'
         })
       }
@@ -44,7 +44,7 @@ module.exports = {
       const isPasswordValid = await user.comparePassword(password)
       // console.log('isPasswordValid', isPasswordValid, password)
       if (!isPasswordValid) {
-        return res.status(403).send({
+        return res.send({
           error: 'Incorrect email or password given'
         })
       }
