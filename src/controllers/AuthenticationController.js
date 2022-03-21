@@ -17,7 +17,6 @@ module.exports = {
       // Return a jwt token
       const userJson = user.toJSON()
       res.send({
-        user: user.id,
         token: jwtSignUser(userJson)
       })
     } catch (err) {
@@ -51,10 +50,11 @@ module.exports = {
 
       // Return a jwt token
       const userJson = user.toJSON()
-      res.send({
-        user: user.id,
-        token: jwtSignUser(userJson)
-      })
+      const token = jwtSignUser(userJson)
+      const ssoJwt = {
+        token: token
+      }
+      res.cookie("SSO", token).send(ssoJwt)
     } catch (err) {
       console.log(err)
       res.status(500).send({
