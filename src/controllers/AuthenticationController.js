@@ -44,7 +44,7 @@ module.exports = {
       // console.log('isPasswordValid', isPasswordValid, password)
       if (!isPasswordValid) {
         return res.send({
-          error: 'Incorrect email or password given'
+          error: 'Wrong password. Please try again.'
         })
       }
 
@@ -54,7 +54,7 @@ module.exports = {
       const ssoJwt = {
         token: token
       }
-      res.cookie("SSO", token).send(ssoJwt)
+      res.send(ssoJwt)
     } catch (err) {
       console.log(err)
       res.status(500).send({

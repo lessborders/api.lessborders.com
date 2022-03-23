@@ -16,25 +16,25 @@ module.exports = {
   },
   async getPublicUser (req, res) {
     try {
-      const userId = req.params.id
+      const { email } = req.body
       const user = await User.findOne({
         where: {
-          id: userId
+            email: email
         },
         attributes: ['id']
       })
       if(user) {
         res.send(user)
       } else {
-        res.status(404).send({
-          error: `User not found.`
+        res.send({
+          error: `Couldn't find an account`
         })
       }
       
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: `User not found.`
+        error: `Oopsies.`
       })
     }
   },
