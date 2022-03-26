@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 
 import configLocal from '../config'
-import User from '../models/user'
+import User from './User'
 
 let db = {}
 var _sequelize = null
