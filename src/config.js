@@ -1,6 +1,7 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
-module.exports = {
+const config = {
   port: process.env.PORT || 8081,
   db: {
     database: process.env.DB_NAME || 'lb_cloud',
@@ -15,3 +16,5 @@ module.exports = {
     jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }
+
+export default config

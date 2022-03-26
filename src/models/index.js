@@ -1,21 +1,19 @@
-const fs = require('fs')
-const path = require('path')
-var basename = path.basename(module.filename)
-const Sequelize = require('sequelize')
+import Sequelize from 'sequelize'
 
-var env = process.env.NODE_ENV || 'development'
-var configLocal = require('../config/config')
-var db = {}
-var sequelize = null
+import configLocal from '../config'
+import User from '../models/user'
 
-sequelize = new Sequelize(
+let db = {}
+var _sequelize = null
+
+_sequelize = new Sequelize(
   configLocal.db.database,
   configLocal.db.user,
   configLocal.db.password,
   configLocal.db.options
 )
 
-sequelize.authenticate().then(function () {
+_sequelize.authenticate().then(function () {
   console.log('Database connected and authenticated!')
   return true
 }).catch(function (err) {
@@ -23,16 +21,8 @@ sequelize.authenticate().then(function () {
   return false
 })
 
-fs.readdirSync(__dirname)
-  .filter(function (file) {
-    return (
-      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
-    )
-  })
-  .forEach(function (file) {
-    var model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
-    db[model.name] = model
-  })
+let model = User(_sequelize, Sequelize.DataTypes)
+db[model.name] = model
 
 Object.keys(db).forEach(function (modelName) {
   if (db[modelName].associate) {
@@ -40,7 +30,10 @@ Object.keys(db).forEach(function (modelName) {
   }
 })
 
-db.sequelize = sequelize
+db.sequelize = _sequelize
 db.Sequelize = Sequelize
 
-module.exports = db
+let userModel = db.User
+
+export { userModel as User }
+export const sequelize = db.sequelize

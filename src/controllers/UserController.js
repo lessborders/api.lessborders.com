@@ -1,7 +1,7 @@
-const { User } = require('../models')
-const _ = require('lodash')
+import { User } from '../models'
+import _ from'lodash'
 
-module.exports = {
+export default {
   async getUsers (req, res) {
     try {
       const usersList = await User.findAll({ 

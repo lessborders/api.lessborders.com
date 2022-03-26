@@ -1,7 +1,7 @@
-const { Order } = require('../models')
-const _ = require('lodash')
+import { Order } from '../models'
+import _ from'lodash'
 
-module.exports = {
+export default {
   async getUserOrders (req, res) {
     try {
       const ordersList = await User.findAll({ 

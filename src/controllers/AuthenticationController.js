@@ -1,7 +1,6 @@
-const jwt = require('jsonwebtoken')
-const config = require('../config/config')
-
-const { User } = require('../models')
+import jwt from 'jsonwebtoken'
+import config from '../config'
+import { User } from '../models'
 
 // The jwtSignUser method is used for generating a jwt token
 function jwtSignUser (user) {
@@ -10,7 +9,7 @@ function jwtSignUser (user) {
     expiresIn: ONE_WEEK
   })
 }
-module.exports = {
+export default {
   async register (req, res) {
     try {
       const user = await User.create(req.body)

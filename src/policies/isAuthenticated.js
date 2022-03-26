@@ -1,6 +1,6 @@
-const passport = require('passport')
+import passport from 'passport'
 
-module.exports = function (req, res, next) {
+export default function (req, res, next) {
   passport.authenticate('jwt', function (err, user) {
     if (err || !user) {
       res.status(403).send({

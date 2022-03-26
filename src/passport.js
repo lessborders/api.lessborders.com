@@ -1,10 +1,11 @@
-const passport = require('passport')
-const { User } = require('./models')
+import passport from 'passport'
+import passportJwt from 'passport-jwt'
 
-const JwtStrategy = require('passport-jwt').Strategy
-const ExtractJwt = require('passport-jwt').ExtractJwt
+import { User } from './models'
+import config from './config'
 
-const config = require('./config/config')
+const JwtStrategy = passportJwt.Strategy
+const ExtractJwt = passportJwt.ExtractJwt
 
 passport.use(
   new JwtStrategy({
@@ -29,4 +30,4 @@ passport.use(
   })
 )
 
-module.exports = null
+export default null
