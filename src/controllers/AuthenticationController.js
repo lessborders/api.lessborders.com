@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
-import config from '../config'
-import { User } from '../models'
+import config from '../config.js'
+import { User } from '../models/index.js'
 
 // The jwtSignUser method is used for generating a jwt token
 function jwtSignUser (user) {

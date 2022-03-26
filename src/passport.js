@@ -1,8 +1,8 @@
 import passport from 'passport'
 import passportJwt from 'passport-jwt'
 
-import { User } from './models'
-import config from './config'
+import { User } from './models/index.js'
+import config from './config.js'
 
 const JwtStrategy = passportJwt.Strategy
 const ExtractJwt = passportJwt.ExtractJwt

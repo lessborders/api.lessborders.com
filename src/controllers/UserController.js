@@ -1,4 +1,4 @@
-import { User } from '../models'
+import { User } from '../models/index.js'
 import _ from'lodash'
 
 export default {

@@ -1,9 +1,9 @@
 import express from 'express';
 
-import AuthenticationController from './controllers/AuthenticationController'
-import AuthenticationControllerPolicy from './policies/AuthenticationControllerPolicy'
-import UserController from './controllers/UserController'
-import isAuthenticated from './policies/isAuthenticated'
+import AuthenticationController from './controllers/AuthenticationController.js'
+import AuthenticationControllerPolicy from './policies/AuthenticationControllerPolicy.js'
+import UserController from './controllers/UserController.js'
+import isAuthenticated from './policies/isAuthenticated.js'
 
 var router = express.Router();
 

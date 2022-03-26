@@ -1,4 +1,4 @@
-import { Order } from '../models'
+import { Order } from '../models/index.js'
 import _ from'lodash'
 
 export default {

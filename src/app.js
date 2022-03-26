@@ -3,9 +3,9 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import morgan from'morgan'
 
-import config from'./config'
-import { sequelize } from'./models'
-import router from './routes'
+import config from'./config.js'
+import { sequelize } from'./models/index.js'
+import router from './routes.js'
 
 const app = express()
 app.use(morgan('combined'))
