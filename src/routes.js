@@ -1,7 +1,6 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const UserController = require('./controllers/UserController')
-// const OrderController = require('./controllers/OrderController')
 const isAuthenticated = require('./policies/isAuthenticated')
 
 module.exports = (app) => {

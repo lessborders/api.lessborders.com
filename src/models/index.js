@@ -4,7 +4,7 @@ var basename = path.basename(module.filename)
 const Sequelize = require('sequelize')
 
 var env = process.env.NODE_ENV || 'development'
-var configLocal = require('../config/config')
+var configLocal = require('../config')
 var db = {}
 var sequelize = null
 
