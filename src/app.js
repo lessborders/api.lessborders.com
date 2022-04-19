@@ -5,6 +5,7 @@ import morgan from'morgan'
 
 import config from'./config.js'
 import { sequelize } from'./models/index.js'
+import passport from './passport.js'
 import router from './routes.js'
 
 const app = express()
