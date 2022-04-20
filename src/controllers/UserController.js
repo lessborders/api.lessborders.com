@@ -50,7 +50,8 @@ export default {
       const user = await User.findOne({
         where: {
           id: userId
-        }
+        },
+        attributes: ['id', 'email']
       })
       
       if(user && user.id === req.user.id) {
@@ -67,5 +68,5 @@ export default {
         error: `User not found.`
       })
     }
-  }
+  },
 }

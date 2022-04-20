@@ -12,9 +12,9 @@ router.post('/auth/register',
             AuthenticationController.register)
 router.post('/auth/login',
             AuthenticationController.login)
-
 router.post('/user',
             UserController.getPublicUser)
+
 router.get('/user/private/:id',
             isAuthenticated,
             UserController.getPrivateUser)

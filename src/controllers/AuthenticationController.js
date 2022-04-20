@@ -49,7 +49,8 @@ export default {
 
       // Return a jwt token
       const userObj = {
-        id: user.id
+        id: user.id,
+        email: user.email
       }
       const userJson = userObj
       const token = jwtSignUser(userJson)
